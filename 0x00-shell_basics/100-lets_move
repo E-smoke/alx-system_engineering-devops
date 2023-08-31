@@ -1,2 +1,2 @@
-#!/bin/bash
-cp [[:upper:]]* /tmp/u
+i#!/bin/bash
+cp [:upper:]* /tmp/u
