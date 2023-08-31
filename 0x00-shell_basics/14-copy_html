@@ -1,17 +1,2 @@
 #!/bin/bash
-
-# Get the current working directory
-cur_dir=$(pwd)
-
-# Get the parent directory
-parent_dir=$(dirname "$cur_dir")
-
-# Find all HTML files in the current directory
-html_files=$(find . -name "*.html")
-
-# For each HTML file, copy it to the parent directory if it does not exist there or is newer than the version in the parent directory
-for html_file in $html_files; do
-  if [ ! -f "$parent_dir/$html_file" ] || [ "$html_file" -nt "$parent_dir/$html_file" ]; then
-    cp "$html_file" "$parent_dir"
-  fi
-done
+find . -name "*.html" -exec cp -v {} ../ \
