@@ -34,6 +34,7 @@ else
 {
 printf("Zombie process created, PID: %d\n", getpid());
 }
+return (0);
 }
 /**
  * infinite_while - never ends execution
