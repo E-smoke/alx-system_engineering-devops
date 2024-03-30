@@ -12,6 +12,7 @@ sudo sed -i 's/listen\s*80;/listen 80 default_server;/g' /etc/nginx/sites-availa
 sudo service nginx restart
 
 # Create a temporary index.html file with "Hello World!" content
+sudo chown -R $USER:$USER /var/www/html
 echo "Hello World!" > /var/www/html/index.html
 
 # Exit script
