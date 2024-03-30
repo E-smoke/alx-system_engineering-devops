@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#install Nginx
+
+# Update package lists and install Nginx
+apt-get update
+apt-get install nginx -y
+
+# Configure Nginx to listen on port 80
+sed -i 's/listen\s*80;/listen 80 default_server;/g' /etc/nginx/sites-available/default
+
+# Reload Nginx configuration (since systemctl is not allowed)
+nginx -s reload
+
+# Create a temporary index.html file with "Hello World!" content
+echo "<html><body><h1>Hello World!</h1></body></html>" > /var/www/html/index.html
+
+# Exit script
+exit 0
