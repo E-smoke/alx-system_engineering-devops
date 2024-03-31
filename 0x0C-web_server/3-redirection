@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#install Nginx
+
+# Update package lists and install Nginx
+sudo apt-get update
+sudo apt-get install nginx -y
+
+# Configure Nginx to listen on port 80
+sudo sed -i 's/listen\s*80;/listen 80 default_server;/g' /etc/nginx/sites-available/default
+sudo sed -i '/^\s*location \/ {/i\    location /redirect_me {\n        return 301 http:\/\/localhost\/redir.html;\n    }\n' /etc/nginx/sites-available/default
+
+# Restart Nginx
+sudo service nginx restart
+
+# Create a temporary index.html file with "Hello World!" content
+sudo chown -R "$USER":"$USER" /var/www/html
+echo "Hello World!" > /var/www/html/index.html
+echo "Redirect success!" > /var/www/html/redir.html
+
+# Exit script
+exit 0
