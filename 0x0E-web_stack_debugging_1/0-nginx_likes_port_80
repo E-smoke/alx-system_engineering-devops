@@ -1,4 +1,4 @@
-#!/usr/bin/env bash:wq
+#!/usr/bin/env bash
 #a server to listening on port 80 of all server's active IPv4 IPs
 
 sudo sed -i "s/8080/80/" /etc/nginx/sites-enabled/default
