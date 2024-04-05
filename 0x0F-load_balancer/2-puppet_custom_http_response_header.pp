@@ -1,4 +1,4 @@
-utomation: creates a custom HTTP header response with Puppet.
+#!/usr/bin/env bash
 exec { 'command':
   command  => 'apt-get -y update;
   apt-get -y install nginx;

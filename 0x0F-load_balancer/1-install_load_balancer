@@ -1,4 +1,4 @@
-onfigure Nginx so that its HTTP response contains
+#!/usr/bin/env bash
 # a custom header
 #
 balancer="\
