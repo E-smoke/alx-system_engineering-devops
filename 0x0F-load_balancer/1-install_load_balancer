@@ -1,28 +1,24 @@
 #!/usr/bin/env bash
 # a custom header
 #
-balancer="\
-frontend haproxy_balancer
+balancer='
+
+
+frontend fe
     bind *:80
     mode http
-    default_backend webservers
+    default_backend be
     
-backend webservers
+backend be
     balance roundrobin
-    server 515069-web-01 54.224.37.165:80 check
-    server 515069-web-02 52.91.168.143:80 check
-"
+    server 515069-web-01 54.160.104.88:80 check
+    server 515069-web-02 34.224.15.78:80 check
+'
 # Update packages
-apt-get -y update
-apt-get -y upgrade
-
-# Add HAProxy PPA
-apt-get -y install software-properties-common
-add-apt-repository -y ppa:vbernat/haproxy-2.5
-apt-get -y update
+sudo apt-get -y update
 
 # Install HAProxy
-apt-get -y install haproxy
-cp -a /etc/haproxy/haproxy.cfg{,.orig}
-echo "$balancer" >> /etc/haproxy/haproxy.cfg
-service haproxy restart
+sudo apt install haproxy
+sudo chmod 777 /etc/haproxy/haproxy.cfg
+sudo echo "$balancer" >> /etc/haproxy/haproxy.cfg
+sudo service haproxy restart
