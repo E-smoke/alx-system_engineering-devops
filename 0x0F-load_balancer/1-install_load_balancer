@@ -18,7 +18,7 @@ backend be
 sudo apt-get -y update
 
 # Install HAProxy
-sudo apt install haproxy
+sudo apt -y install haproxy
 sudo chmod 777 /etc/haproxy/haproxy.cfg
 sudo echo "$balancer" >> /etc/haproxy/haproxy.cfg
 sudo service haproxy restart
